@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:shafinbd/config/myStyle.dart';
 import 'package:shafinbd/config/translator.dart';
 import 'package:shafinbd/route/appRoute.dart';
 
 import 'bindings/initBindings.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   InitBindings().dependencies();
+  await GetStorage.init();
   runApp(const MyApp());
 }
 

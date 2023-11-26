@@ -41,6 +41,10 @@ dependencies:
   rive: ^0.12.3
   get_storage: ^2.1.1
   email_validator: ^2.1.17
+  carousel_slider: ^4.2.1
+  shimmer_animation: ^2.1.0+1
+  cached_network_image: ^3.3.0
+  percent_indicator: ^4.2.3
 
 dev_dependencies:
   flutter_test:

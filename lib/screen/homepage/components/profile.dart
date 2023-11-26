@@ -8,7 +8,7 @@ import 'package:shafinbd/controller/indexController.dart';
 enum SingingCharacter { en, bn }
 
 class Profile extends StatelessWidget {
-  Profile({super.key});
+  const Profile({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -106,29 +106,25 @@ class Profile extends StatelessWidget {
                                   ),
                                 ),
                               ),
-                              RadioListTile<SingingCharacter>(
-                                title: Text("Bangla"),
-                                value: SingingCharacter.bn,
-                                //selected: true,
+                              RadioListTile(
+                                title: Text('বাংলা'),
+                                value: 'bn',
                                 groupValue: controller.character,
                                 onChanged: (value) {
-                                  var locale = Locale('bn', 'BD');
-                                  Get.updateLocale(locale);
-                                  controller.changeLanguage();
+                                  controller.changeLanguage(value!);
+                                  print('++++++++++++bn++++++++++');
                                   Get.back();
                                 },
                               ),
-                              RadioListTile<SingingCharacter>(
+                              RadioListTile(
                                 title: Text("English"),
-                                value: SingingCharacter.en,
-                                // selected: false,
+                                value: 'en',
                                 groupValue: controller.character,
                                 onChanged: (value) {
-                                  var locale = Locale('en', 'US');
-                                  Get.updateLocale(locale);
                                   print(Get.locale);
-                                  controller.changeLanguage();
+                                  controller.changeLanguage(value!);
                                   Get.back();
+                                  print(controller.character);
                                 },
                               ),
                             ],

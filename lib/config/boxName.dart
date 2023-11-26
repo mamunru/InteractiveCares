@@ -6,4 +6,5 @@ class boxName {
   static String email = 'email';
   static String phone = 'phone';
   static String text = 'text';
+  static String local = 'local';
 }

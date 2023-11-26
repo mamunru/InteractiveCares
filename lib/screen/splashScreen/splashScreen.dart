@@ -15,7 +15,7 @@ class splashScreen extends StatelessWidget {
           Container(
             height: MediaQuery.of(context).size.height * .70,
             width: MediaQuery.of(context).size.width,
-            child: Center(
+            child: const Center(
               child: RiveAnimation.asset(
                 fit: BoxFit.contain,
                 'assets/images/splash.riv',

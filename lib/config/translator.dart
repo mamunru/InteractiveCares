@@ -14,7 +14,7 @@ class Messages extends Translations {
           'change_pass': 'Change Password',
           'language': 'Language',
           'certificates': 'Certificates',
-          'books': 'Books',
+          'book': 'Books',
           'payment': 'Payment & Order History',
           'blog': 'Blog',
           'store': 'Book Store',
@@ -22,6 +22,12 @@ class Messages extends Translations {
           'report': 'Report',
           'terms': 'Terms & Conditions',
           'logout': 'Logout',
+          'on_courses': 'Ongoing Courses',
+          'view': 'View All',
+          'continue': 'Continue',
+          'categories': 'Categories',
+          'courses': 'Courses',
+          'add_cart': 'Enroll now'
         },
         'bn_BD': {
           'hello': 'হেলো ওয়ার্ড',
@@ -34,14 +40,20 @@ class Messages extends Translations {
           'change_pass': 'পাসওয়ার্ড পরিবর্তন',
           'language': 'ভাষা',
           'certificates': 'সার্টিফিকেট',
-          'books': 'বই',
+          'book': 'বই',
           'payment': 'পেমেন্ট এবং অর্ডার ইতিহাস',
           'blog': 'ব্লগ',
           'store': 'বইয়ের দোকান',
           'hotline': 'হটলাইন @number',
           'report': 'রিপোর্ট',
           'terms': 'শর্তাবলী',
-          'logout': 'Logout'
+          'logout': 'Logout',
+          'on_courses': 'চলমান কোর্স',
+          'view': 'সব দেখাও',
+          'continue': 'চালিয়ে যান',
+          'categories': 'ক্যাটাগরি',
+          'courses': 'কোর্স',
+          'add_cart': 'তালিকাভুক্ত করুন'
         }
       };
 }

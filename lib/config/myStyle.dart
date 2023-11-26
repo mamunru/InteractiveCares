@@ -10,6 +10,9 @@ class myStyle {
   static Color purewhite = Color.fromARGB(255, 255, 255, 255);
   static Color lightGry = Color.fromARGB(255, 177, 180, 186);
   static Color buttoncolor = Color.fromARGB(255, 7, 27, 251);
+  static Color textcolor = Color.fromARGB(255, 34, 9, 255);
+  static Color special = Color.fromARGB(255, 24, 179, 199);
+  static Color extra = Color.fromARGB(255, 13, 91, 239);
 
   static TextStyle detailText12 = TextStyle(fontSize: 12);
 

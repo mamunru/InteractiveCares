@@ -13,7 +13,7 @@ class MyButton extends StatelessWidget {
       {required this.ontap,
       required this.title,
       this.height = 50,
-      this.width,
+      this.width = 1,
       this.color = Colors.red,
       this.textcolor = Colors.white,
       super.key});
@@ -24,7 +24,8 @@ class MyButton extends StatelessWidget {
         child: InkWell(
       onTap: ontap,
       child: Container(
-        height: 50,
+        height: height,
+        width: width == 1 ? MediaQuery.of(context).size.width : width,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10), color: color),
         child: Center(

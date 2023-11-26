@@ -6,7 +6,7 @@ import 'package:shafinbd/route/routeName.dart';
 
 class PageController extends GetxController {
   bool onloading = false;
-  GetStorage box = GetStorage();
+  final box = GetStorage();
   @override
   void onInit() {
     pageChange();
@@ -23,19 +23,21 @@ class PageController extends GetxController {
     final connectivityResult = await (Connectivity().checkConnectivity());
     switch (connectivityResult) {
       case ConnectivityResult.mobile:
-        if (box.hasData(boxName.token)) {
-          Get.offAllNamed(routeName.homepage);
-        } else {
-          Get.offAllNamed(routeName.login);
-        }
+        // if (box.hasData(boxName.token)) {
+        //   Get.offAllNamed(routeName.homepage);
+        // } else {
+        //   Get.offAllNamed(routeName.login);
+        // }
+        Get.offAllNamed(routeName.homepage);
         onloading = false;
         break;
       case ConnectivityResult.wifi:
-        if (box.hasData(boxName.token)) {
-          Get.offAllNamed(routeName.homepage);
-        } else {
-          Get.offAllNamed(routeName.login);
-        }
+        Get.offAllNamed(routeName.homepage);
+        // if (box.hasData(boxName.token)) {
+        //   Get.offAllNamed(routeName.homepage);
+        // } else {
+        //   Get.offAllNamed(routeName.login);
+        // }
         //Get.offAllNamed('/nointernet');
 
         onloading = false;

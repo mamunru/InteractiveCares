@@ -1,51 +1,152 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:shafinbd/config/myStyle.dart';
 import 'package:shafinbd/controller/indexController.dart';
 
+import 'components/index.dart';
+import 'components/mycpurse.dart';
+import 'components/profile.dart';
+
 class Homepage extends StatelessWidget {
-  const Homepage({super.key});
+  Homepage({super.key});
+  List pages = [IndexPage(), MyCourse(), Profile()];
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<indexController>(builder: (controller) {
-      return Scaffold(
-        body: controller.pages[controller.index],
-        bottomNavigationBar: BottomNavigationBar(
-          selectedItemColor: Colors.blue, // Set the selected item color here
-          unselectedItemColor: Colors.grey,
-          //selectedIconTheme: IconThemeData(color: Colors.yellow),
-          currentIndex: controller.index,
-          elevation: 0,
-          // backgroundColor: const Color.fromARGB(255, 190, 186, 186),
-          onTap: (index) {
-            controller.onchange(index);
-          },
-          items: [
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.home,
-                //color: Colors.black,
-              ),
-              label: 'Home',
+    return Scaffold(
+      body: GetBuilder<indexController>(
+        builder: (controller) {
+          return pages[controller.index.value];
+        },
+      ),
+      bottomNavigationBar: GetBuilder<indexController>(
+        builder: (_) {
+          return Container(
+            height: 60,
+            padding: EdgeInsets.only(top: 8),
+            width: MediaQuery.of(context).size.width,
+            color: Colors.white,
+            child: Row(
+              // backgroundColor: Colors.white,
+
+              // showSelectedLabels: false,
+              // showUnselectedLabels: false,
+              // unselectedItemColor: Colors.black,
+              // //backgroundColor: Colors.red,
+              // //backgroundColor: Colors.white,
+              // //elevation: 1.0,
+              children: [
+                Expanded(
+                  child: InkWell(
+                      onTap: () {
+                        _.onchange(0);
+                      },
+                      child: Container(
+                        width: MediaQuery.of(context).size.width / 3,
+                        height: 50,
+                        child: Column(
+                          children: [
+                            Center(
+                              child: FaIcon(
+                                FontAwesomeIcons.house,
+                                size: _.index == 0 ? 25 : 20,
+                                color: _.index == 0
+                                    ? myStyle.special
+                                    : Colors.black,
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 2),
+                              child: Text(
+                                'Home',
+                                style: myStyle.detailText12.copyWith(
+                                  color: _.index == 0
+                                      ? myStyle.special
+                                      : Colors.black,
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                      )),
+                ),
+                Expanded(
+                  child: InkWell(
+                      onTap: () {
+                        _.onchange(1);
+                      },
+                      child: Container(
+                        width: MediaQuery.of(context).size.width / 3,
+                        height: 50,
+                        child: Column(
+                          children: [
+                            Center(
+                              child: FaIcon(
+                                FontAwesomeIcons.book,
+                                size: _.index == 1 ? 25 : 20,
+                                color: _.index == 1
+                                    ? myStyle.special
+                                    : Colors.black,
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 2),
+                              child: Text(
+                                'My Courses',
+                                style: myStyle.detailText12.copyWith(
+                                  color: _.index == 1
+                                      ? myStyle.special
+                                      : Colors.black,
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                      )),
+                ),
+                Expanded(
+                  child: InkWell(
+                      onTap: () {
+                        _.onchange(2);
+                      },
+                      child: Container(
+                        width: MediaQuery.of(context).size.width / 3,
+                        height: 50,
+                        child: Column(
+                          children: [
+                            Center(
+                              child: FaIcon(
+                                FontAwesomeIcons.solidUser,
+                                size: _.index == 2 ? 25 : 20,
+                                color: _.index == 2
+                                    ? myStyle.special
+                                    : Colors.black,
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 2),
+                              child: Text(
+                                'Profile',
+                                style: myStyle.detailText12.copyWith(
+                                  color: _.index == 2
+                                      ? myStyle.special
+                                      : Colors.black,
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                      )),
+                )
+              ],
+              // currentIndex: _selectedIndex,
+              // selectedItemColor: Theme.of(context).focusColor,
+              // onTap: _onItemTapped,
             ),
-            BottomNavigationBarItem(
-              //backgroundColor: Colors.black,
-              icon: Icon(
-                Icons.book,
-                //color: Colors.black,
-              ),
-              label: "Course",
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.person,
-                // color: Colors.black,
-              ),
-              label: "Profile",
-            ),
-          ],
-        ),
-      );
-    });
+          );
+        },
+      ),
+    );
   }
 }

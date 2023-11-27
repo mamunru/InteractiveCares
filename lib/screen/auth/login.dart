@@ -3,10 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:shafinbd/config/myStyle.dart';
+import 'package:shafinbd/controller/usercontroller.dart';
 import 'package:shafinbd/route/routeName.dart';
 import 'package:shafinbd/screen/widget/mybutton.dart';
-
-import '../../controller/loginController.dart';
 
 class LoginPage extends StatelessWidget {
   TextEditingController username = TextEditingController();
@@ -17,9 +16,12 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<loginController>(builder: (logincontroller) {
+    return GetBuilder<UserController>(builder: (logincontroller) {
       return Scaffold(
-          backgroundColor: Colors.white,
+          appBar: AppBar(
+            elevation: 0,
+          ),
+          //backgroundColor: Colors.white,
           body: SingleChildScrollView(
             child: Container(
               child: Column(
@@ -39,6 +41,17 @@ class LoginPage extends StatelessWidget {
                             style: myStyle.headerText,
                           ),
                         ),
+                        Visibility(
+                            visible: logincontroller.regsuccessstatus,
+                            child: Padding(
+                              padding:
+                                  const EdgeInsets.only(top: 5, bottom: 15),
+                              child: Text(
+                                logincontroller.regsuccess,
+                                style: myStyle.headerText2
+                                    .copyWith(color: Colors.red),
+                              ),
+                            )),
                         Container(
                           padding: const EdgeInsets.all(5),
                           decoration: BoxDecoration(
@@ -58,9 +71,9 @@ class LoginPage extends StatelessWidget {
                                   height: 10,
                                 ),
                                 Visibility(
-                                    visible: false,
+                                    visible: logincontroller.loginerror,
                                     child: Text(
-                                      'UserName Or Password Wrong !!',
+                                      'Email Or Password is Wrong !!',
                                       style: myStyle.detailText16
                                           .copyWith(color: Colors.red),
                                     )),
@@ -80,7 +93,7 @@ class LoginPage extends StatelessWidget {
                                       if (value == null ||
                                           value.isEmpty ||
                                           emailv == false) {
-                                        return 'Email or User Name is Empty or Invalide';
+                                        return 'Email is Empty or Invalide';
                                       }
                                       return null;
                                     },
@@ -95,7 +108,7 @@ class LoginPage extends StatelessWidget {
                                   padding: const EdgeInsets.all(8.0),
                                   child: TextFormField(
                                     controller: password,
-                                    obscureText: true,
+                                    obscureText: logincontroller.showpassword,
                                     style: const TextStyle(fontSize: 18),
                                     validator: (value) {
                                       if (value == null || value.isEmpty) {
@@ -104,6 +117,15 @@ class LoginPage extends StatelessWidget {
                                       return null;
                                     },
                                     decoration: InputDecoration(
+                                        suffixIcon: IconButton(
+                                          icon: Icon(
+                                              logincontroller.showpassword
+                                                  ? Icons.visibility_off
+                                                  : Icons.visibility),
+                                          onPressed: () {
+                                            logincontroller.passwordsee();
+                                          },
+                                        ),
                                         border: InputBorder.none,
                                         hintText: "Password",
                                         hintStyle:
@@ -117,11 +139,26 @@ class LoginPage extends StatelessWidget {
                         const SizedBox(
                           height: 30,
                         ),
-                        MyButton(
-                            ontap: () {
-                              Get.offAllNamed(routeName.homepage);
-                            },
-                            title: 'login'.tr),
+                        logincontroller.loginloading
+                            ? Container(
+                                height: 50,
+                                child: Center(
+                                  child: CircularProgressIndicator(),
+                                ),
+                              )
+                            : MyButton(
+                                ontap: () {
+                                  if (_formKey.currentState!.validate() ??
+                                      false) {
+                                    logincontroller.trylogin(
+                                        email: username.text,
+                                        password: password.text);
+                                  }
+                                },
+                                title: 'login'.tr),
+                        const SizedBox(
+                          height: 20,
+                        ),
                         MyButton(
                           ontap: () {
                             Get.toNamed(routeName.registration);
@@ -136,14 +173,14 @@ class LoginPage extends StatelessWidget {
                         Container(
                             child: InkWell(
                           onTap: () {
-                            Get.bottomSheet(Container(
-                              color: Colors.white,
-                              height: MediaQuery.of(context).size.height * .45,
-                              width: MediaQuery.of(context).size.width,
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                              ),
-                            ));
+                            // Get.bottomSheet(Container(
+                            //   color: Colors.white,
+                            //   height: MediaQuery.of(context).size.height * .45,
+                            //   width: MediaQuery.of(context).size.width,
+                            //   child: Padding(
+                            //     padding: const EdgeInsets.all(8.0),
+                            //   ),
+                            // ));
                           },
                           child: const Text(
                             "Forgot Password?",

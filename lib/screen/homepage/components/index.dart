@@ -7,6 +7,8 @@ import 'package:get/get.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:shafinbd/config/demo.dart';
 import 'package:shafinbd/config/myStyle.dart';
+import 'package:shafinbd/controller/usercontroller.dart';
+import 'package:shafinbd/route/routeName.dart';
 import 'package:shafinbd/screen/widget/cardcourse.dart';
 import 'package:shafinbd/screen/widget/myappbar.dart';
 import 'package:shafinbd/screen/widget/mybutton.dart';
@@ -16,7 +18,8 @@ import '../../widget/imgae/network_catch.dart';
 import '../../widget/mytile.dart';
 
 class IndexPage extends StatelessWidget {
-  const IndexPage({super.key});
+  IndexPage({super.key});
+  UserController usercontrolle = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +44,7 @@ class IndexPage extends StatelessWidget {
           // color: Colors.amber,
           child: SingleChildScrollView(
             child: Padding(
-              padding: const EdgeInsets.all(4.0),
+              padding: const EdgeInsets.all(5.0),
               child: Column(
                 children: [
                   Card(
@@ -87,92 +90,100 @@ class IndexPage extends StatelessWidget {
                   const SizedBox(
                     height: 10,
                   ),
-                  Container(
-                    height: 200,
-                    width: MediaQuery.of(context).size.width,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                            height: 40,
-                            width: MediaQuery.of(context).size.width,
-                            child: MyTile(
-                              title: 'on_courses'.tr,
-                              trailingtext: 'view'.tr,
-                              ontap: () {},
-                            )),
-                        const SizedBox(
-                          height: 8,
-                        ),
-                        Container(
-                          height: 150,
-                          child: ListView.builder(
-                              itemCount: 5,
-                              scrollDirection: Axis.horizontal,
-                              itemBuilder: (index, _) {
-                                return Card(
-                                  color: Color.fromARGB(143, 237, 239, 246),
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10.0),
-                                  ),
-                                  //elevation: 5,
-                                  child: Container(
-                                    height: 150,
-                                    width:
-                                        MediaQuery.of(context).size.width / 2,
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        SizedBox(
-                                          height: 10,
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: Text(
-                                            'Basics of C Programming with Monir',
-                                            style: myStyle.detailText15,
-                                            textAlign: TextAlign.center,
+                  Visibility(
+                    visible: usercontrolle.user == 0 ? false : true,
+                    child: Container(
+                      height: 200,
+                      width: MediaQuery.of(context).size.width,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                              height: 40,
+                              width: MediaQuery.of(context).size.width,
+                              //padding: EdgeInsets.symmetric(horizontal: 5),
+                              child: MyTile(
+                                title: 'on_courses'.tr,
+                                trailingtext: 'view'.tr,
+                                ontap: () {},
+                              )),
+                          const SizedBox(
+                            height: 8,
+                          ),
+                          Container(
+                            height: 150,
+                            child: ListView.builder(
+                                itemCount: 5,
+                                scrollDirection: Axis.horizontal,
+                                itemBuilder: (index, _) {
+                                  return Card(
+                                    color: Color.fromARGB(143, 237, 239, 246),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10.0),
+                                    ),
+                                    //elevation: 5,
+                                    child: Container(
+                                      height: 150,
+                                      width:
+                                          MediaQuery.of(context).size.width / 2,
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          SizedBox(
+                                            height: 10,
                                           ),
-                                        ),
-                                        const SizedBox(
-                                          height: 15,
-                                        ),
-                                        LinearPercentIndicator(
-                                          width: MediaQuery.of(context)
-                                                  .size
-                                                  .width /
-                                              2.1,
-                                          lineHeight: 5.0,
-                                          percent: 0.5,
-                                          backgroundColor: const Color.fromRGBO(
-                                              158, 158, 158, 1),
-                                          progressColor: myStyle.textcolor,
-                                        ),
-                                        Padding(
-                                          padding: EdgeInsets.only(
-                                              left: 8, top: 4, bottom: 5),
-                                          child: Text('40% is complete'),
-                                        ),
-                                        Center(
-                                          child: MyButton(
-                                            ontap: () {},
-                                            title: 'continue'.tr,
-                                            height: 30,
+                                          Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: Text(
+                                              'Basics of C Programming with Monir',
+                                              style: myStyle.detailText15,
+                                              textAlign: TextAlign.center,
+                                            ),
+                                          ),
+                                          const SizedBox(
+                                            height: 15,
+                                          ),
+                                          LinearPercentIndicator(
                                             width: MediaQuery.of(context)
                                                     .size
                                                     .width /
-                                                3,
-                                            color: myStyle.special,
+                                                2.1,
+                                            lineHeight: 5.0,
+                                            percent: 0.5,
+                                            backgroundColor:
+                                                const Color.fromRGBO(
+                                                    158, 158, 158, 1),
+                                            progressColor: myStyle.textcolor,
                                           ),
-                                        )
-                                      ],
+                                          Padding(
+                                            padding: EdgeInsets.only(
+                                                left: 8, top: 4, bottom: 5),
+                                            child: Text('40% is complete'),
+                                          ),
+                                          Center(
+                                            child: MyButton(
+                                              ontap: () {
+                                                Get.toNamed(routeName.mycourses,
+                                                    arguments: courses[0]);
+                                              },
+                                              title: 'continue'.tr,
+                                              height: 30,
+                                              width: MediaQuery.of(context)
+                                                      .size
+                                                      .width /
+                                                  3,
+                                              color: myStyle.special,
+                                            ),
+                                          )
+                                        ],
+                                      ),
                                     ),
-                                  ),
-                                );
-                              }),
-                        )
-                      ],
+                                  );
+                                }),
+                          )
+                        ],
+                      ),
                     ),
                   ),
                   SizedBox(

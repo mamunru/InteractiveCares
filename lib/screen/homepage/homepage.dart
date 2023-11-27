@@ -59,7 +59,7 @@ class Homepage extends StatelessWidget {
                             Padding(
                               padding: const EdgeInsets.only(top: 2),
                               child: Text(
-                                'Home',
+                                'home'.tr,
                                 style: myStyle.detailText12.copyWith(
                                   color: _.index == 0
                                       ? myStyle.special
@@ -93,7 +93,7 @@ class Homepage extends StatelessWidget {
                             Padding(
                               padding: const EdgeInsets.only(top: 2),
                               child: Text(
-                                'My Courses',
+                                'my_courses'.tr,
                                 style: myStyle.detailText12.copyWith(
                                   color: _.index == 1
                                       ? myStyle.special
@@ -127,7 +127,7 @@ class Homepage extends StatelessWidget {
                             Padding(
                               padding: const EdgeInsets.only(top: 2),
                               child: Text(
-                                'Profile',
+                                'profile'.tr,
                                 style: myStyle.detailText12.copyWith(
                                   color: _.index == 2
                                       ? myStyle.special

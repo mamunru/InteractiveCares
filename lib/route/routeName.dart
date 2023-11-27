@@ -5,4 +5,5 @@ class routeName {
   static String login = '/login';
   static String registration = '/registration';
   static String password = '/password';
+  static String mycourses = '/mycourses';
 }

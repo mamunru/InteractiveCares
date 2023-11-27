@@ -45,6 +45,9 @@ dependencies:
   shimmer_animation: ^2.1.0+1
   cached_network_image: ^3.3.0
   percent_indicator: ^4.2.3
+  video_player: ^2.8.1
+  chewie: ^1.7.1
+  dio: ^5.3.4
 
 dev_dependencies:
   flutter_test:

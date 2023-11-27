@@ -4,9 +4,12 @@ import 'package:get_storage/get_storage.dart';
 import 'package:shafinbd/config/boxName.dart';
 import 'package:shafinbd/route/routeName.dart';
 
-class PageController extends GetxController {
+class PageViewController extends GetxController {
   bool onloading = false;
   final box = GetStorage();
+
+  bool checknet = false;
+
   @override
   void onInit() {
     pageChange();
@@ -20,6 +23,9 @@ class PageController extends GetxController {
   }
 
   void navigatedToIntroduction() async {
+    checknet = true;
+    update();
+
     final connectivityResult = await (Connectivity().checkConnectivity());
     switch (connectivityResult) {
       case ConnectivityResult.mobile:
@@ -63,6 +69,8 @@ class PageController extends GetxController {
         onloading = false;
         break;
     }
+
+    checknet = false;
 
     update();
   }

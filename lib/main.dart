@@ -20,13 +20,18 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      title: 'Interactive Cares',
       debugShowCheckedModeBanner: false,
       translations: Messages(),
       locale: Locale('bn', 'BD'),
       fallbackLocale: Locale('en', 'US'),
       initialRoute: '/',
       theme: ThemeData(
-        appBarTheme: AppBarTheme(backgroundColor: myStyle.primaryColor),
+        appBarTheme: AppBarTheme(
+            elevation: 1,
+            titleTextStyle: TextStyle(color: Colors.black, fontSize: 18),
+            backgroundColor: myStyle.primaryColor,
+            iconTheme: IconThemeData(color: Colors.black)),
         scaffoldBackgroundColor: myStyle.backgroudColor,
       ),
       getPages: appRoutes(),

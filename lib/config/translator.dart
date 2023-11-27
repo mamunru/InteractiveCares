@@ -5,9 +5,13 @@ class Messages extends Translations {
   Map<String, Map<String, String>> get keys => {
         'en_US': {
           'hello': 'Hello World',
+          'lg': 'English',
           'order_success':
               '@name ,Your Order ( @order) was created Successfully ',
           'login_text': 'Login Here',
+          'home': 'Home',
+          'my_courses': 'My Courses',
+          'profile': 'Profile',
           'login': 'Login',
           'registration': 'Registration',
           'personal_info': 'Personal Information',
@@ -31,6 +35,10 @@ class Messages extends Translations {
         },
         'bn_BD': {
           'hello': 'হেলো ওয়ার্ড',
+          'lg': 'বাংলা',
+          'home': 'হোম',
+          'my_courses': 'আমার কোর্স',
+          'profile': 'প্রোফাইল',
           'order_success':
               '@name ,আপনার অর্ডার ( @order) সফলভাবে তৈরি করা হয়েছে ',
           'login_text': 'এখানে লগইন করুন',
@@ -53,7 +61,7 @@ class Messages extends Translations {
           'continue': 'চালিয়ে যান',
           'categories': 'ক্যাটাগরি',
           'courses': 'কোর্স',
-          'add_cart': 'তালিকাভুক্ত করুন'
+          'add_cart': 'সংগ্রহ করুন'
         }
       };
 }

@@ -23,7 +23,7 @@ class splashScreen extends StatelessWidget {
             ),
           ),
           Text(
-            'Shafin-BD',
+            'Interactive-Cares',
             style: myStyle.headerText2,
           )
         ],
